@@ -1,0 +1,6 @@
+db:
+  username: root
+  password: root
+  host: localhost
+  database: home_task1
+  
