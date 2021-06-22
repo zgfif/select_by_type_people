@@ -1,3 +1,10 @@
+# this class is used to build sql request string,
+# example:
+# qb = QueryBuilder.new
+# qb.select('*').from('people').where(id: '1').get_string =>
+# RESULT:
+# 'SELECT * FROM people WHERE id=1;'
+
 class QueryBuilder
 	def initialize
 		# defuault values

@@ -99,11 +99,6 @@ RSpec.configure do |config|
 =end
 end
 
-require_relative '../lib/database'
-require_relative '../lib/query_builder'
 require_relative '../lib/people'
 require_relative '../lib/engineer'
 require_relative '../lib/worker'
-
-require 'mysql2'
-require 'yaml'

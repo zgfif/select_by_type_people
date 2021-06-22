@@ -1,3 +1,8 @@
+require_relative './database'
+require_relative './query_builder'
+
+
+# this class is used to retrive id, name and type from people-table by certain type
 class People
 	attr_reader :type
 

@@ -1,3 +1,8 @@
+require 'mysql2'
+require 'yaml'
+
+ # this class is used to make sql request to mysql database
+ # configuration is saved in config.yml
 class Database
 	def initialize
 		@db_client = Mysql2::Client.new(YAML.load_file('config.yml')['db'])
