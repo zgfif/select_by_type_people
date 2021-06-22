@@ -1,6 +1,5 @@
 db:
   username: root
-  password: root
+  password: 1
   host: localhost
-  database: home_task1
-  
+  database: home_db

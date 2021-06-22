@@ -1,21 +1,19 @@
 require 'mysql2'
 require 'yaml'
-require_relative 'classes'
+require_relative './lib/database'
 
 #db = DB.new
+
 #b = QueryBuilder.new
 
-#str = b.select('id,name').from('people').where(:id=>1,:type=>'student').get('people')
+#str = b.select('id,name').from('people').where(:id=>1,:type=>'student')
 
 #db.query(str).each do  |row|
 #p row
 #end
 
-
-
- stud = Student.new
-stud.all
-
-teach = Teacher.new
-teach.all
-	
+#  stud = Student.new
+# stud.all
+#
+# teach = Teacher.new
+# teach.all
