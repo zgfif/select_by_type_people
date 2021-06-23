@@ -3,9 +3,8 @@
 require_relative './people'
 
 # this class is used to retrive all people by type 'worker'
-
 class Worker < People
-	def initialize(type = 'worker')
-		super
-	end
+  def initialize(type = 'worker')
+    super
+  end
 end
