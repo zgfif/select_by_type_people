@@ -1,10 +1,13 @@
-# this class is used to build sql request string,
-# example:
-# qb = QueryBuilder.new
-# qb.select('*').from('people').where(id: '1').get_string =>
-# RESULT:
-# 'SELECT * FROM people WHERE id=1;'
+# frozen_string_literal: true
 
+=begin
+this class is used to build sql request string,
+example:
+qb = QueryBuilder.new
+qb.select('*').from('people').where(id: '1').get_string =>
+RESULT:
+'SELECT * FROM people WHERE id=1;'
+=end
 class QueryBuilder
 	def initialize
 		# defuault values
