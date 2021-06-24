@@ -13,21 +13,19 @@ class People
   end
 
   def all
-    str = from_people.where(type).string
-    db_query(str)
+    db_query from_people.where(type).string
   end
 
   def find(id)
-    str = from_people.where(type.merge({ id: id })).string
-    db_query(str)
+    db_query from_people.where(type.merge({ id: id })).string
   end
 
   def join_all
-    str = from_people.where(type)
-                     .join('people_groups', 'id', 'people_id', 'LEFT JOIN')
-                     .string
+    query_str = from_people.where(type)
+                           .join('people_groups', 'id', 'people_id', 'LEFT JOIN')
+                           .string
 
-    db_query(str)
+    db_query(query_str)
   end
 
   private
