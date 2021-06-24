@@ -5,21 +5,42 @@ require_relative '../query_builder'
 
 # this class is used to retrive id, name and type from people-table by certain type
 class People
-  attr_reader :type
+  attr_reader :builder, :db
 
-  def initialize(type)
-    @type = type
+  def initialize
     @db = Database.new
     @builder = QueryBuilder.new
   end
 
   def all
-    @db.query(build_request).to_a
+    str = from_people.where(type).string
+    db_query(str)
+  end
+
+  def find(id)
+    str = from_people.where(type.merge({ id: id })).string
+    db_query(str)
+  end
+
+  def join_all
+    str = from_people.where(type)
+                     .join('people_groups', 'id', 'people_id', 'LEFT JOIN')
+                     .string
+
+    db_query(str)
   end
 
   private
 
-  def build_request
-    @builder.select('id, name, type').from('people').where({ type: type }).string
+  def from_people
+    builder.from('people')
+  end
+
+  def db_query(str)
+    db.query(str).to_a
+  end
+
+  def type
+    { type: self.class.to_s.downcase }
   end
 end

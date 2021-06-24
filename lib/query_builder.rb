@@ -13,6 +13,7 @@ class QueryBuilder
     @where = '1=1' # default true
     @from = ''
     @sql_string = ''
+    @join = ''
   end
 
   def select(attributes)
@@ -41,7 +42,15 @@ class QueryBuilder
     self # returns instance of QueryBuilder with updated (or NOT) @where
   end
 
+  # SELECT request in string
   def string
-    @sql_string = "SELECT #{@select} FROM #{@from} WHERE #{@where};"
+    @sql_string = "SELECT #{@select} FROM #{@from}#{@join} WHERE #{@where};"
+  end
+
+  # build string 'INNER JOIN people ON workers.type = people.type'
+  def join(table, field1, field2, join_type = 'INNER JOIN')
+    @join = " #{join_type} #{table} ON #{@from}.#{field1}=#{table}.#{field2}"
+
+    self
   end
 end

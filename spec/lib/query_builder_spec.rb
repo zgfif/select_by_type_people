@@ -29,4 +29,12 @@ RSpec.describe QueryBuilder do
     expect(qb.where({ id: '1' }).from('people').select('name, age, id').string)
       .to eq("SELECT name, age, id FROM people WHERE id='1';")
   end
+
+  it 'should correctly build with join' do
+    expression = qb.select('*').from('people')
+                   .join('people_groups', 'id', 'people_id', 'INNER JOIN')
+                   .where({ type: 'trader' }).string
+
+    expect(expression).to eq("SELECT * FROM people INNER JOIN people_groups ON people.id=people_groups.people_id WHERE type='trader';")
+  end
 end
