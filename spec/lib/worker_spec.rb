@@ -10,11 +10,11 @@ RSpec.describe Worker do
   end
 
   it 'should return worker by id' do
-    expect(workers.find(1).count).to eq(0)
+    expect(workers.find(2)['id']).to eq(2)
   end
 
-  it 'should return worker by id' do
-    expect(workers.find(2).count).to eq(1)
+  it 'should NOT return worker by id' do
+    expect(workers.find(22)).to be_nil
   end
 
   it 'should return with group id' do

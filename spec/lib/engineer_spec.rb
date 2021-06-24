@@ -10,11 +10,11 @@ RSpec.describe Engineer do
   end
 
   it 'should find engineer by id' do
-    expect(engineers.find(4).count).to eq(1)
+    expect(engineers.find(4)['id']).to eq(4)
   end
 
   it 'should NOT find engineer by id' do
-    expect(engineers.find(3).count).to eq(0)
+    expect(engineers.find(3)).to be_nil
   end
 
   it 'should return all engineers with group ids' do

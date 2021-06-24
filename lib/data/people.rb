@@ -17,7 +17,8 @@ class People
   end
 
   def find(id)
-    db_query from_people.where(type.merge({ id: id })).string
+    condition = type.merge({ id: id })
+    db_query(from_people.where(condition).string).first
   end
 
   def join_all
